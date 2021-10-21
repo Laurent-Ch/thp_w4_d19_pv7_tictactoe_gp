@@ -30,14 +30,22 @@ puts "le second joueur sera #{game_1.following_player.name}."
 puts "Voici votre terrain de jeu !"
 board_1.display_board(board_1.array)
 
-#Game round for both players
-game_1.round(board_1.array)
+until board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
 
-board_1.display_board(board_1.array)
+  game_1.round_pt1(board_1.array)
+  board_1.display_board(board_1.array)
 
-#mettre une boucle while sur les conditions de victoire
+    break if board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
 
-#starting the game ! 
+  game_1.round_pt2(board_1.array)
+  board_1.display_board(board_1.array)
+
+end
+
+if board_1.is_full?(board_1.array)
+  puts "this is a tie!"
+end
+
 
 binding.pry
 

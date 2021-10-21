@@ -20,20 +20,23 @@ class Game
   end
 
   def playing_choice(player)
-    puts "#{player.name} choisissez une case, A/B/C pour la ligne et 1/2/3 pour la colonne. Par exemple A1"
+    puts "#{player.name} choisis une case, A/B/C pour la ligne et 1/2/3 pour la colonne. Par exemple A1"
     choice = gets.chomp.upcase
     possible_moves = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
     until (possible_moves).include?(choice) do
-        puts "je n'ai pas compris, rentrez la coordonnée exacte"
-        # choice = gets.chomp.upcase
+        puts "Cette coordonnées n'existe pas, ré-essaye !"
+        choice = gets.chomp.upcase
     end
     return choice
   end
   
-  def round(array)
+  def round_pt1(array)
     choice1 = playing_choice(@starting_player)
-    choice2 = playing_choice(@following_player)
     playing_move(choice1, array, @starting_player.name)
+  end
+
+  def round_pt2(array)
+    choice2 = playing_choice(@following_player)
     playing_move(choice2, array, @following_player.name)
   end
 
@@ -42,10 +45,10 @@ class Game
     possible_moves = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
     possible_moves.each do |i|
     if i.include?(playing_choice) 
-      if player == "A"
-        array.insert(possible_moves.index(i),"O")
-      elsif player == "B"
-        array.insert(possible_moves.index(i),"X")
+      if player == @starting_player.name
+        array[possible_moves.index(i)] = "X"
+      elsif player == @following_player.name
+        array[possible_moves.index(i)] = "O"
       end
     end
     end
