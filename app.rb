@@ -20,4 +20,7 @@ game_1.starting_player
 
 #starting the game ! 
 
+binding.pry
+
+
 
