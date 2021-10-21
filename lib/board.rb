@@ -1,13 +1,14 @@
 require 'bundler'
 require 'pry'
 
-# class Board
+class Board
+attr_accessor :state
 
-  # attr_accessor :state
+def initialize
+  array = [0,0,0,0,0,0,0,0,0]
+end
 
-
-def display_board 
-  array = [1,2,3,4,5,6,7,8,9]
+def display_board(array)
 
     puts "       1         2         3     "
     puts "  -------------------------------"
@@ -25,4 +26,4 @@ def display_board
     puts "  -------------------------------"
 end
     
-display_board
+end
