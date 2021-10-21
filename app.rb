@@ -8,12 +8,12 @@ require 'game'
 require 'board'
 
 # Initialize the game with 2 players.
-puts "Bienvenue. Ce jeu ce joue à deux ; prenons vos noms."
-puts "Quel est ton blaze?"
+puts "Bienvenue ! Ce jeu se joue à deux ; prenons vos noms.".colorize(:mode => :bold, :background => :black)
+puts "Quel est ton blaze?".colorize(:mode => :bold)
 print '>'
 name1 = gets.chomp
 
-puts 'Et toi, vaillant adversaire ?'
+puts 'Et toi, vaillant adversaire ?'.colorize(:mode => :bold)
 print '>'
 name2 = gets.chomp
 
@@ -23,30 +23,34 @@ board_1 = Board.new
 
 # Saying who is the first to play.
 game_1.defining_starting_player
-puts 'Tirage au sort :'
-puts "le premier joueur sera #{game_1.starting_player.name}."
-puts "le second joueur sera #{game_1.following_player.name}."
+puts "C'est l'heure du tirage au sort :".colorize(:mode => :bold, :background => :black)
+puts " "
+puts "le premier joueur sera #{game_1.starting_player.name}.".colorize(:background => :red)
+puts "le second joueur sera #{game_1.following_player.name}.".colorize(:background => :blue)
 
 game_counter = 0
 starting_player_victories = 0
 following_player_victories = 0
 
 loop do
+  puts " "
   puts "#{game_counter} parties ont été joués pour le moment."
-  puts "#{game_1.starting_player.name} a gagné #{starting_player_victories} parties."
-  puts "#{game_1.following_player.name} a gagné #{following_player_victories} parties."
+  puts "#{game_1.starting_player.name} a gagné #{starting_player_victories} parties.".colorize(:background => :red)
+  puts "#{game_1.following_player.name} a gagné #{following_player_victories} parties.".colorize(:background => :blue)
 
   # Showing board
-  puts 'Voici votre terrain de jeu !'
+  puts " "
+  puts "Voici votre terrain de jeu !".colorize(:mode => :bold, :background => :black)
   board_1.display_board(board_1.array)
 
+# Loop on victory conditions
   until board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
 
     game_1.round_pt1(board_1.array)
     board_1.display_board(board_1.array)
 
     if board_1.has_got_a_winner?(board_1.array)
-      puts "Bravo #{game_1.starting_player.name} tu as gagné"
+      puts "Bravo #{game_1.starting_player.name}, tu as gagné !".colorize(:background => :red)
       starting_player_victories += 1
     elsif board_1.is_full?(board_1.array)
       puts 'Raté, on recommence ?'
@@ -56,7 +60,7 @@ loop do
 
     game_1.round_pt2(board_1.array)
     board_1.display_board(board_1.array)
-
+    
   end
 
   game_1.play_another_game?
