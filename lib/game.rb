@@ -21,7 +21,6 @@ class Game
 
     # [...]
 
-<<<<<<< Updated upstream
   def playing_choice
     puts "Choisissez une case, A/B/C pour la ligne et 1/2/3 pour la colonne. Par exemple A1"
     choice = gets.chomp.upcase
@@ -45,7 +44,7 @@ class Game
   end
   
   end
-=======
+  
     def play_another_game?
       puts "this game is over. Do you want to play another round (y/n)?"
       answer = gets.chomp
@@ -67,4 +66,3 @@ class Game
 
   end
 end
->>>>>>> Stashed changes
