@@ -16,6 +16,7 @@ class Game
         @starting_player = @player2
         @following_player = @player1
       end
+    end
 
     # def still_ongoing ?
     #   # Pseudocode victory? == false && draw == false ? true : false

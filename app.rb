@@ -1,12 +1,12 @@
 require 'bundler'
 Bundler.require
 
-$:.unshift File.expand_path('lib/app', __dir__)
+$:.unshift File.expand_path('lib', __dir__)
 # list the files that we'll require
 require 'player'
 require 'game'
-require 'board'
-require 'case'
+# require 'board'
+# require 'case'
 
 #initialize the game with 2 players
 game_1 = Game.new
