@@ -2,13 +2,12 @@ require 'bundler'
 Bundler.require
 
 $:.unshift File.expand_path('lib', __dir__)
-# list the files that we'll require
+# List the files that we'll require.
 require 'player'
 require 'game'
 require 'board'
-require 'case'
 
-#initialize the game with 2 players
+# Initialize the game with 2 players.
 puts "Joueur, c'est à vous, quel est ton blaze?"
 print ">"
 name1 = gets.chomp
@@ -17,13 +16,24 @@ puts "Et toi, vaillant adversaire ?"
 print ">"
 name2 = gets.chomp
 
+# Initialiazing the game and the board
 game_1 = Game.new(name1,name2)
+board_1 = Board.new
 
-#saying who is the first to play
+# Saying who is the first to play.
 game_1.defining_starting_player
 puts "Tirage au sort :"
 puts "le premier joueur sera #{game_1.starting_player.name}."
 puts "le second joueur sera #{game_1.following_player.name}."
+
+# Showing board
+puts "Voici votre terrain de jeu !"
+board_1.display_board(board_1.array)
+
+#Game round for both players
+game_1.round(board_1.array)
+
+board_1.display_board(board_1.array)
 
 #mettre une boucle while sur les conditions de victoire
 
