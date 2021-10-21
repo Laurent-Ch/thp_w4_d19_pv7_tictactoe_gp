@@ -55,18 +55,18 @@ class Game
   end
   
   def play_another_game?
-    puts "This game is over. Do you want to play another round (y/n)?"
+    puts "Cette partie est finie. Voulez-vous jouer à nouveau (y/n)?"
     print ">"
     answer = gets.chomp
       until answer == "y" || answer == "n"
-        puts "I didn't get your answer, please type it again."
+        puts "Veuillez taper 'y' ou 'n'."
         answer = gets.chomp
       end
     case
       when answer == "y"
-        puts "OK, get ready for a new game!"
+        puts "Bien, c'est reparti!"
       when answer == "n"
-        puts "OK ! Thanks for playing"
+        puts "D'accord ! Merci d'avoir joué."
         exit!
     end
   end

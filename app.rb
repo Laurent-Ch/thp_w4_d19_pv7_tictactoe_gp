@@ -8,21 +8,22 @@ require 'game'
 require 'board'
 
 # Initialize the game with 2 players.
-puts "Joueur, c'est à vous, quel est ton blaze?"
-print ">"
+puts "Bienvenue. Ce jeu ce joue à deux ; prenons vos noms."
+puts "Quel est ton blaze?"
+print '>'
 name1 = gets.chomp
 
-puts "Et toi, vaillant adversaire ?"
-print ">"
+puts 'Et toi, vaillant adversaire ?'
+print '>'
 name2 = gets.chomp
 
 # Initialiazing the game and the board
-game_1 = Game.new(name1,name2)
+game_1 = Game.new(name1, name2)
 board_1 = Board.new
 
 # Saying who is the first to play.
 game_1.defining_starting_player
-puts "Tirage au sort :"
+puts 'Tirage au sort :'
 puts "le premier joueur sera #{game_1.starting_player.name}."
 puts "le second joueur sera #{game_1.following_player.name}."
 
@@ -31,12 +32,12 @@ starting_player_victories = 0
 following_player_victories = 0
 
 loop do
-  puts "#{game_counter} games have currently been played."
-  puts "#{game_1.starting_player.name} has won #{starting_player_victories} times."
-  puts "#{game_1.following_player.name} has won #{following_player_victories} times." 
+  puts "#{game_counter} parties ont été joués pour le moment."
+  puts "#{game_1.starting_player.name} a gagné #{starting_player_victories} parties."
+  puts "#{game_1.following_player.name} a gagné #{following_player_victories} parties."
 
   # Showing board
-  puts "Voici votre terrain de jeu !"
+  puts 'Voici votre terrain de jeu !'
   board_1.display_board(board_1.array)
 
   until board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
@@ -48,7 +49,7 @@ loop do
       puts "Bravo #{game_1.starting_player.name} tu as gagné"
       starting_player_victories += 1
     elsif board_1.is_full?(board_1.array)
-      puts "Raté, on recommence ?"
+      puts 'Raté, on recommence ?'
     end
 
     break if board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
@@ -60,11 +61,7 @@ loop do
 
   game_1.play_another_game?
   game_counter += 1
-  board_1.array = array = [".",".",".",".",".",".",".",".","."]
+  board_1.array = array = ['.', '.', '.', '.', '.', '.', '.', '.', '.']
 end
 
-
 binding.pry
-
-
-
