@@ -5,8 +5,11 @@ class Case
 
   attr_accessor :state
 
-  state = 0
-  def isempty(state)
+  def initialize
+    state = 0
+  end
+
+  def is_empty(state)
     if state == 0
       true
     elsif state == 1 
