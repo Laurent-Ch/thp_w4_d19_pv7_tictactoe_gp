@@ -6,6 +6,8 @@ GEM
     diff-lcs (1.4.4)
     dotenv (2.7.6)
     method_source (1.0.0)
+    nokogiri (1.12.5-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     parallel (1.21.0)
