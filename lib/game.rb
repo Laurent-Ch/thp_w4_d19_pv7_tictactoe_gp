@@ -2,9 +2,10 @@
 class Game
  attr_accessor :player1, :player2, :starting_player, :following_player
 
-  def initialize
-    @player1 = Player.new
-    @player2 = Player.new
+  def initialize(name1,name2)
+    @player1 = Player.new(name1)
+    @player2 = Player.new(name2)
+    puts "Bienvenue à #{name1} et #{name2}!"
   end
   
     def starting_player

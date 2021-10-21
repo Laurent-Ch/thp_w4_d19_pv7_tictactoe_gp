@@ -9,4 +9,8 @@ attr_accessor :name
     @name = player_name
   end
 
+  def initialize(name)
+    @name = name
+  end
+
 end
