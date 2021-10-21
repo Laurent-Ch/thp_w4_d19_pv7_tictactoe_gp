@@ -26,26 +26,41 @@ puts "Tirage au sort :"
 puts "le premier joueur sera #{game_1.starting_player.name}."
 puts "le second joueur sera #{game_1.following_player.name}."
 
-# Showing board
-puts "Voici votre terrain de jeu !"
-board_1.display_board(board_1.array)
+game_counter = 0
+starting_player_victories = 0
+following_player_victories = 0
 
-until board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
+loop do
+  puts "#{game_counter} games have currently been played."
+  puts "#{game_1.starting_player.name} has won #{starting_player_victories} times."
+  puts "#{game_1.following_player.name} has won #{following_player_victories} times." 
 
-  game_1.round_pt1(board_1.array)
+  # Showing board
+  puts "Voici votre terrain de jeu !"
   board_1.display_board(board_1.array)
 
-  if board_1.has_got_a_winner?(board_1.array)
-    puts "Bravo #{game_1.starting_player.name} tu as gagné"
-  elsif board_1.is_full?(board_1.array)
-    puts "Raté, on recommence ?"
+  until board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
+
+    game_1.round_pt1(board_1.array)
+    board_1.display_board(board_1.array)
+
+    if board_1.has_got_a_winner?(board_1.array)
+      puts "Bravo #{game_1.starting_player.name} tu as gagné"
+      starting_player_victories += 1
+    elsif board_1.is_full?(board_1.array)
+      puts "Raté, on recommence ?"
+    end
+
+    break if board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
+
+    game_1.round_pt2(board_1.array)
+    board_1.display_board(board_1.array)
+
   end
 
-  break if board_1.has_got_a_winner?(board_1.array) || board_1.is_full?(board_1.array)
-
-  game_1.round_pt2(board_1.array)
-  board_1.display_board(board_1.array)
-
+  game_1.play_another_game?
+  game_counter += 1
+  board_1.array = array = [".",".",".",".",".",".",".",".","."]
 end
 
 

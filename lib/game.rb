@@ -64,7 +64,7 @@ class Game
       end
     case
       when answer == "y"
-        puts "link this with the start of another round"
+        puts "OK, get ready for a new game!"
       when answer == "n"
         puts "OK ! Thanks for playing"
         exit!
